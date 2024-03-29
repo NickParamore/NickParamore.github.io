@@ -23,8 +23,8 @@
     <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="graphics.html">Graphics</a></li>
-        <li><a href="#">Code</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="code.html">Code</a></li>
+        <li><a href="about.html">About</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -33,17 +33,66 @@
     </div>
 </nav>
 
-<script src="portfolio.js"></script>
+
 <body>
     <section>
         <div class="content">
-            <h3 class="graphics-header">Graphics:</h3>
+            <h3 class="graphics-header">Digital Graphics:</h3>
     
-            <ul id="gallery">
-                <li><a href="#"><img src="images/Fantasy Landscape2.jpg"></a></li>
-                <li><a href="#"><img src="images/Landscape.jpg"></a></li>
-                
-            </ul>
+            <div class="gallery">
+                <div class="photo">
+                    <img src="/images/Fantasy Landscape2.jpg" alt="Photo 1" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/Landscape.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/Still Life.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/Self Portrait.png" alt="Photo 2" class="gallery-image">
+                </div>
+                <!-- Add more photos as needed -->
+            </div>
+
+            <h3 class="graphics-header">Traditional Graphics:</h3>
+
+            <div class="gallery">
+                <div class="photo">
+                    <img src="/images/IMG_0379.jpg" alt="Photo 1" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0380.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0493.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0509.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0523.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0525.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0383.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <div class="photo">
+                    <img src="/images/IMG_0522.jpg" alt="Photo 2" class="gallery-image">
+                </div>
+                <!-- Add more photos as needed -->
+            </div>
+        
+            <!-- Modal for displaying full-size photo -->
+            <div id="modal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modal-image">
+                <div id="caption"></div>
+            </div>
+        
+            <script src="portfolio.js"></script>
         </div>
     </section>
 </body>
