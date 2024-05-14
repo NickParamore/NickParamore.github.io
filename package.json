@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "kaboom": "^3000.1.17",
+    "parcel-bundler": "^1.12.5",
+    "phaser": "^3.80.1"
+  },
+  "name": "y",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "endlessRunner.js",
+  "scripts": {
+    "start": "parcel src/endlessRunner.html -p 5500",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
