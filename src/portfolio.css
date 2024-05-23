@@ -60,6 +60,7 @@ h2{
     font-size: 16px;
     letter-spacing: 2px;
     font-weight: bold;
+    
 }
 .nav-links ::after{
     content: "";
@@ -101,6 +102,7 @@ body{
     justify-content: center;
     padding-top: 50px;
     padding-bottom: 50px;
+    
 }
 
 .gallery {

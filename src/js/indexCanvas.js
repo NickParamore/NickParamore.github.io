@@ -2,17 +2,25 @@ const canvas = document.getElementById('canvas');
 var nav = document.getElementById('nav');
 const c = canvas.getContext('2d');
 
+//when the window is resized we make sure the canvas is still taking 
+//up full width and height
 //make sure canvas is taking up full width and height
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+    canvas.width = document.body.clientWidth;
+    canvas.height = window.innerHeight;
+    //For some reason I need to set the canvas width twice. Not sure why but it works ¯\_(ツ)_/¯
+    canvas.width = document.body.clientWidth;
+
+}
+resizeCanvas();
+
 let spots = [];
 let hue = 0;
 
 //when the window is resized we make sure the canvas is still taking 
 //up full width and height
 window.addEventListener('resize', function(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    resizeCanvas();
     init();
     //call update function on resize so we can make sure the text is centered
     text.update();
@@ -23,11 +31,11 @@ const mouse = {
     x: undefined,
     y: undefined
 }
-
+const canvasOffsetY = 100;
 canvas.addEventListener('mousemove', function(event) {
-    mouse.x = event.x;
+    mouse.x = event.pageX;
     // -100 because of nav bar on top
-    mouse.y = event.y - 100;
+    mouse.y = event.pageY - canvasOffsetY;
     for (let i = 0; i < 3; i++){
         spots.push(new Particle());
     }
@@ -133,11 +141,11 @@ function Bubbles(x,y,dx,dy,radius, bubbleStoke){
     this.update = function() {
         this.draw();
 
-        if (this.x + this.radius > innerWidth || this.x - this.radius < 0 ) {
+        if (this.x + this.radius > document.body.clientWidth || this.x - this.radius < 0 ) {
             this.dx = -this.dx;
         }
 
-        if (this.y + this.radius > innerWidth || this.y - this.radius < 0 ) {
+        if (this.y + this.radius > innerHeight || this.y - this.radius < 0 ) {
             this.dy = -this.dy;
         }
 
@@ -153,7 +161,7 @@ function init() {
     bubbleArray = [];
     for (var i = 0; i < 100; i ++) {
         var radius = (Math.random() * 80);
-        var x = Math.random() * (innerWidth - radius * 2) + radius;
+        var x = Math.random() * (document.body.clientWidth - radius * 2) + radius;
         var y = Math.random() * (innerHeight - radius * 2) + radius;
         var dx = (Math.random() - 0.5);
         var dy = (Math.random() - 0.5);
