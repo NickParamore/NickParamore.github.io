@@ -1,4 +1,5 @@
 const canvas = document.getElementById('canvas');
+var nav = document.getElementById('nav');
 const c = canvas.getContext('2d');
 
 //make sure canvas is taking up full width and height
@@ -12,8 +13,12 @@ let hue = 0;
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    init();
+    //call update function on resize so we can make sure the text is centered
+    text.update();
 })
 
+//initialize mouse x and y variables
 const mouse = {
     x: undefined,
     y: undefined
@@ -77,11 +82,100 @@ function handleParticle() {
     }
 }
 
+
+function welcomeText(x,y,size) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+
+    this.draw = function() {
+        c.fillStyle = 'white';
+        c.font = 'bold ' + this.size + 'px Poppins';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.fillText('Welcome to my website!', this.x, this.y);
+    }
+    this.update = function() {
+        this.draw();
+        
+        //make sure that text is recentered when resized
+        this.x = (canvas.width/2);
+        this.y = (canvas.height/2);
+
+        if(mouse.x - this.x < 500 && mouse.x - this.x > -500 
+            && mouse.y - this.y < 50 && mouse.y - this.y > -50){
+            if (this.size < 120) {
+                this.size++;
+            }
+        } else if(this.size > 100) {
+            this.size--;
+        }
+    }
+}
+
+var text = new welcomeText((canvas.width/2),(canvas.height/2),100);
+
+function Bubbles(x,y,dx,dy,radius, bubbleStoke){
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+    this.radius = radius;
+    this.bubbleStoke = bubbleStoke;
+    
+    this.draw = function() {
+        c.beginPath();
+        c.arc(this.x,this.y,this.radius,0, Math.PI * 2, false);
+        c.lineWidth = this.bubbleStoke;
+        c.strokeStyle = 'rgb(255, 243, 211)';
+        c.stroke();
+    }
+    this.update = function() {
+        this.draw();
+
+        if (this.x + this.radius > innerWidth || this.x - this.radius < 0 ) {
+            this.dx = -this.dx;
+        }
+
+        if (this.y + this.radius > innerWidth || this.y - this.radius < 0 ) {
+            this.dy = -this.dy;
+        }
+
+        this.x += this.dx;
+        this.y += this.dy;
+    }
+}
+
+var bubbleArray = [];
+
+function init() {
+
+    bubbleArray = [];
+    for (var i = 0; i < 100; i ++) {
+        var radius = (Math.random() * 80);
+        var x = Math.random() * (innerWidth - radius * 2) + radius;
+        var y = Math.random() * (innerHeight - radius * 2) + radius;
+        var dx = (Math.random() - 0.5);
+        var dy = (Math.random() - 0.5);
+        var bubbleStoke = (Math.random() * 2);
+    
+        
+
+        bubbleArray.push(new Bubbles(x,y,dx,dy,radius,bubbleStoke));
+        
+    }
+}
+
 function animate() {
+    requestAnimationFrame(animate);
     c.clearRect(0,0, canvas.width, canvas.height);
+    for (var i = 0; i < bubbleArray.length; i++){
+        bubbleArray[i].update();
+    }
+    text.update();
     handleParticle();
     hue++;
-    requestAnimationFrame(animate);
 }
 animate();
+init();
 
