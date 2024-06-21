@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "kaboom": "^3000.1.17",
+    "lightbox2": "^2.11.4",
     "parcel-bundler": "^1.12.5",
     "phaser": "^3.80.1"
   },

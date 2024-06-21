@@ -1,25 +1,31 @@
 const canvas = document.getElementById('canvas');
-var nav = document.getElementById('nav');
 const c = canvas.getContext('2d');
 
 //when the window is resized we make sure the canvas is still taking 
 //up full width and height
 //make sure canvas is taking up full width and height
 function resizeCanvas() {
-    canvas.width = document.body.clientWidth;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    //For some reason I need to set the canvas width twice. Not sure why but it works ¯\_(ツ)_/¯
-    canvas.width = document.body.clientWidth;
-
 }
 resizeCanvas();
 
 let spots = [];
 let hue = 0;
-
+let numberOfBubbles = 100;
+function scaleBubbles(){
+    if(this.innerWidth > 1000){
+        numberOfBubbles = 100;
+    }
+    else if(this.innerWidth < 1000){
+        numberOfBubbles = 50;
+    }
+}
+scaleBubbles();
 //when the window is resized we make sure the canvas is still taking 
 //up full width and height
 window.addEventListener('resize', function(){
+    scaleBubbles();
     resizeCanvas();
     init();
     //call update function on resize so we can make sure the text is centered
@@ -52,7 +58,7 @@ class Particle{
         this.size = Math.random() * 2 + 0.1;
         this.speedX = Math.random() * 2 - 1;
         this.speedY = Math.random() * 2 - 1;
-        this.color = "hsl(" + hue + ", 100%, 50%)";
+        this.color = "#e6f1ff";
     }
     update() {
         this.x += this.speedX;
@@ -97,7 +103,7 @@ function welcomeText(x,y,size) {
     this.size = size;
 
     this.draw = function() {
-        c.fillStyle = 'white';
+        c.fillStyle = '#e6f1ff';
         c.font = 'bold ' + this.size + 'px Poppins';
         c.textAlign = 'center';
         c.textBaseline = 'middle';
@@ -135,13 +141,13 @@ function Bubbles(x,y,dx,dy,radius, bubbleStoke){
         c.beginPath();
         c.arc(this.x,this.y,this.radius,0, Math.PI * 2, false);
         c.lineWidth = this.bubbleStoke;
-        c.strokeStyle = 'rgb(255, 243, 211)';
+        c.strokeStyle = '#64ffda';
         c.stroke();
     }
     this.update = function() {
         this.draw();
 
-        if (this.x + this.radius > document.body.clientWidth || this.x - this.radius < 0 ) {
+        if (this.x + this.radius > innerWidth || this.x - this.radius < 0 ) {
             this.dx = -this.dx;
         }
 
@@ -153,24 +159,18 @@ function Bubbles(x,y,dx,dy,radius, bubbleStoke){
         this.y += this.dy;
     }
 }
-
 var bubbleArray = [];
-
 function init() {
-
+    
     bubbleArray = [];
-    for (var i = 0; i < 100; i ++) {
+    for (var i = 0; i < numberOfBubbles; i++) {
         var radius = (Math.random() * 80);
-        var x = Math.random() * (document.body.clientWidth - radius * 2) + radius;
+        var x = Math.random() * (innerWidth - radius * 2) + radius;
         var y = Math.random() * (innerHeight - radius * 2) + radius;
         var dx = (Math.random() - 0.5);
         var dy = (Math.random() - 0.5);
-        var bubbleStoke = (Math.random() * 2);
-    
-        
-
+        var bubbleStoke = (Math.random() * 1);
         bubbleArray.push(new Bubbles(x,y,dx,dy,radius,bubbleStoke));
-        
     }
 }
 

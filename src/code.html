@@ -7,39 +7,195 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="/src/portfolio.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        .content {
+            font-family: 'Poppins', sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none; border: none;
+            text-decoration: none;
+            text-transform: none;
+            padding-top: 100px;
+        }
+        .content {
+            padding: 15px 9%;
+            padding-bottom: 100px;
+        }
+        .content .projectsHeading {
+            text-align: center;
+            padding-bottom: 15px;
+            color: #e6f1ff;
+            font-size: 50px;
+        }
+
+        .content .moduleContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+            gap: 35px;
+        }
+        .content .moduleContainer .projectModule {
+            border: 1px solid #4b6599;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px 10px;
+            transition: transform 0.2s ease-out;
+        }
+        .content .moduleContainer .projectModule .projectPreview img{
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        .content .moduleContainer .projectModule .projectPreview a{
+            color: #e6f1ff;
+            font-weight: 300;
+            text-decoration: none;
+        }
+        .content .moduleContainer .projectModule .projectPreview a:hover{
+            color: #64ffda;
+        }
+        .content .moduleContainer .projectModule .projectPreview p{
+            color: rgb(148 163 184);
+            font-weight: 300;
+            font-size: 11pt;
+            text-decoration: none;
+        }
+        .content .moduleContainer .projectModule:hover{
+            border: 1px solid #64ffda;
+            background: #203453;
+            transform: scale(1.1);
+            transition: transform 0.2s ease-in;
+        }
+        /* Project description styles */
+        .projectDescription {
+            transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin-top: 10px; /* Adjust as needed */
+        }
+        .projectDescription.expanded {
+            max-height: 500px;
+            opacity: 1;
+            transition: max-height 0.25s ease-in, opacity 0.25s ease-in;
+        }
+        /* Toggle button styles */
+        .toggle-description {
+            display: inline-block;
+            cursor: pointer;
+            color: #e6f1ff;
+            border: 1px solid #e6f1ff;
+            padding: 3px 10px;
+            border-radius: 3px;
+            margin-top: 12px;
+            transition: opacity 0.25s ease-in-out;
+        }
+        .toggle-description:hover{
+            color: #64ffda;;
+            border: 1px solid #64ffda;
+        }
+    </style>
 </head>
-<nav>
-    <div class="logo-header">
-        <div class="logo">
-            <div class="N1"></div>
-            <div class="N2"></div>
-            <div class="N3"></div>
-        </div>
-        <div class="header">
-            <h1>Nicholas Paramore</h1>
-            <h2>Web Designer</h2>
-        </div>
-    </div>
-    <ul class="nav-links">
-        <li><a href="/src/index.html">Home</a></li>
-        <li><a href="/src/graphics.html">Graphics</a></li>
-        <li><a href="/src/code.html">Code</a></li>
-        <li><a href="/src/about.html">About</a></li>
-    </ul>
-    <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-</nav>
-
-<script src="/src/js/portfolio.js"></script>
 <body>
+    <nav>
+        <div class="logo-header">
+            <div class="logo">
+                <div class="N1"></div>
+                <div class="N2"></div>
+                <div class="N3"></div>
+            </div>
+            <div class="nameHeader">
+                <h1>Nicholas Paramore</h1>
+                <h2>Web Designer</h2>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/src/index.html">Home</a></li>
+            <li><a href="/src/graphics.html">Graphics</a></li>
+            <li><a href="/src/code.html">Code</a></li>
+            <li><a href="/src/about.html">About</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <script src="/libraries/jquery-3.7.1.min.js"></script>
+    <script src="/src/js/portfolio.js"></script>
+    
     <div class="content">
-
-        <div class="description">
-            <a href="/src/endlessRunner.html">Endless Runner Game</a>
+        <h2 class="projectsHeading"> Projects</h2>
+        <div class="moduleContainer">
+            <div class="projectModule">
+                <div class="projectPreview">
+                    <a href="/src/endlessRunner.html"><img src="/images/demo.png" alt="Photo 1"></a>
+                    <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
+                    <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
+                    <div id="projectDescription1" class="projectDescription">
+                        <p>For this project I wanted to learn how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
+                    </div>
+                </div>
+            </div>
+            <div class="projectModule">
+                <div class="projectPreview">
+                    <a href="/src/endlessRunner.html"><img src="/images/demo.png" alt="Photo 2"></a>
+                    <h2 id="projectText2"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
+                    <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
+                    <div id="projectDescription2" class="projectDescription">
+                        <p>For this project I wanted to learn how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
+                    </div>
+                </div>
+            </div>
+            <div class="projectModule">
+                <div class="projectPreview">
+                    <a href="/src/endlessRunner.html"><img src="/images/demo.png" alt="Photo 3"></a>
+                    <h2 id="projectText3"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
+                    <span class="toggle-description" data-toggle="description" data-id="3">More Info</span>
+                    <div id="projectDescription3" class="projectDescription">
+                        <p>For this project I wanted to learn how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <footer>
+        <div id="footerWrapper">
+            <div id="linkWrapper">
+                <a href="https://www.linkedin.com/in/nicholas-paramore-b18457233/" target="_blank"><img src="/images/linkedin-icon.png"></a>
+                <a href="https://github.com/NickParamore" target="_blank"><img src="/images/github-icon.png"></a>
+                <a href="mailto:nickparamore1@gmail.com"><img src="/images/mail-icon.png"></a>
+            </div>
+            <div class="miniLogo">
+                <div class="miniN1"></div>
+                <div class="miniN2"></div>
+                <div class="miniN3"></div>
+            </div>
+            <h4 id="footerText2"> Last updated June 2024</h4>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all toggle buttons
+            const toggleButtons = document.querySelectorAll('.toggle-description');
+
+            // Attach click event listener to each toggle button
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const descriptionId = this.getAttribute('data-id');
+                    const description = document.getElementById(`projectDescription${descriptionId}`);
+                    
+                    if (description.classList.contains('expanded')) {
+                        // Close description
+                        description.classList.remove('expanded');
+                        this.textContent = 'More Info';
+                    } else {
+                        // Open description
+                        description.classList.add('expanded');
+                        this.textContent = 'Less Info';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
