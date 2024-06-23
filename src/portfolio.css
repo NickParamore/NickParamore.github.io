@@ -36,7 +36,7 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 25px;
+    font-size: 30px;
 }
 
 h2 {
@@ -63,9 +63,6 @@ h2 {
     height: 106px;
     background: #4ec2a7;
   }
-h2{
-    font-size: 18px;
-}
 .nav-links{
     display: flex;
     justify-content:space-around;
@@ -192,6 +189,15 @@ body{
 @media screen and (max-width:1050px){
     .content{
         width:100%;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    h2 {
+        font-size: 15px;
+    }
+    .nameHeader {
+        margin-left: 20px;
     }
 }
 
