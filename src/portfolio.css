@@ -215,25 +215,19 @@ body{
         margin-left: 20px;
     }
     .nav-links {
-        padding-bottom: 100px;
-        z-index: 1;
         position: absolute; /* Change position to fixed */
-        top: 1vh; /* Adjusted to start below the navigation bar */
-        right: 0;
-        height: 100%; /* Adjusted height */
-        background-color: #0a192f;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 50%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        
+        width: 100%;
+        height: auto;
+        background: red;
+        display: block;
+        transform: translateY(-100%);
+        z-index: 0;
+        display: none;
     }
 
     .nav-links li {
-        
         opacity: 0;
+        margin: 15px;
     }
 
     .burger {
@@ -242,16 +236,18 @@ body{
 }
 
 .nav-active {
-    transform: translateX(0%);
+    transform: translate(0%);
+    display: block;
+    text-align: center;
 }
 
 @keyframes navLinkFade {
     from {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateY(-50px);
     }
     to {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateY(0px);
     }
 }
