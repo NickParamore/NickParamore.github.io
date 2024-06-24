@@ -160,6 +160,8 @@ body {
 #linkWrapper {
     display: flex; 
     justify-content: center; 
+    align-content: space-evenly;
+    width: 100%;
     opacity: .9;
     padding-top: 10px;
     height: 35px;
@@ -266,8 +268,5 @@ body {
     }
     .burger.active .line:nth-child(3){
         transform: translateY(-8px) rotate(-45deg);
-    }
-    #linkWrapper {
-        gap: 10px;
     }
 }
