@@ -1,22 +1,11 @@
-const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
-
-    burger.addEventListener('click', ()=> {
-        nav.classList.toggle('nav-active');
-
-        navLinks.forEach((link, index) => {
-            if(link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + .3}s`;
-            }
-        });
-    });
+//function that detects when the burger is clicked and then gives it the active class in css for it to drop down
+hamburger = document.querySelector(".burger");
+hamburger.onclick = function (){
+    navBar = document.querySelector(".nav-links");
+    navBar.classList.toggle("active");
 }
-navSlide();
 
+//function that keep the mobile nav-links under the actual nav bar whenever resizing or loading
 window.addEventListener('load', function() {
     adjustNavLinksPosition();
 });
