@@ -11,12 +11,15 @@ resizeCanvas();
 let spots = [];
 let hue = 0;
 let numberOfBubbles = 100;
+let bubbleSize = 80;
 
 function scaleBubbles() {
     if (window.innerWidth > 1000) {
         numberOfBubbles = 100;
+        bubbleSize = 80;
     } else {
         numberOfBubbles = 50;
+        bubbleSize = 40;
     }
 }
 scaleBubbles();
@@ -175,7 +178,7 @@ var bubbleArray = [];
 function init() {
     bubbleArray = [];
     for (var i = 0; i < numberOfBubbles; i++) {
-        var radius = (Math.random() * 80);
+        var radius = (Math.random() * bubbleSize);
         var x = Math.random() * (innerWidth - radius * 2) + radius;
         var y = Math.random() * (innerHeight - radius * 2) + radius;
         var dx = (Math.random() - 0.5);
