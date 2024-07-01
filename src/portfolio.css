@@ -200,10 +200,10 @@ body {
     .content {
         width: 100%;
     }
-    h1 {
+    .nameTag {
         font-size: 25px;
     }
-    h2 {
+    .jobTag {
         font-size: 15px;
     }
     .nameHeader {
@@ -212,10 +212,10 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    h1 {
+    .nameTag {
         font-size: 20px;
     }
-    h2 {
+    .jobTag {
         font-size: 15px;
     }
     .nameHeader {

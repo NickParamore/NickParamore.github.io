@@ -19,7 +19,7 @@
             padding-top: 100px;
         }
         .content {
-            padding: 15px 9%;
+            padding: 15px 20px;
             padding-bottom: 100px;
         }
         .content .projectsHeading {
@@ -30,16 +30,26 @@
         }
 
         .content .moduleContainer {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
-            gap: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
         }
         .content .moduleContainer .projectModule {
-            border: 1px solid #4b6599;
+            position: relative;
+            max-width: 500px;
+            max-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px;
+            border: 3px solid #4b6599;
             border-radius: 5px;
             text-align: center;
-            padding: 10px 10px;
-            transition: transform 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            padding: 0;
+            opacity: .8;
         }
         .content .moduleContainer .projectModule .projectPreview img{
             width: 100%;
@@ -61,10 +71,11 @@
             text-decoration: none;
         }
         .content .moduleContainer .projectModule:hover{
-            border: 1px solid #64ffda;
+            border: 3px solid #64ffda;
             background: #203453;
             transform: scale(1.1);
-            transition: transform 0.2s ease-in;
+            transition: all 0.2s ease-in;
+            opacity: 1;
         }
         /* Project description styles */
         .projectDescription {
@@ -72,7 +83,7 @@
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            margin-top: 10px; /* Adjust as needed */
+            margin: 10px; /* Adjust as needed */
         }
         .projectDescription.expanded {
             max-height: 500px;
@@ -107,8 +118,8 @@
                 </div>
             </a>
             <div class="nameHeader">
-                <h1>Nicholas Paramore</h1>
-                <h2>Web Designer</h2>
+                <h1 class="nameTag">Nicholas Paramore</h1>
+                <h2 class="jobTag">Web Designer</h2>
             </div>
         </div>
         <ul class="nav-links">
@@ -131,27 +142,27 @@
         <div class="moduleContainer">
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><img src="/images/demo.png" alt="Photo 1"></a>
+                    <a href="/src/endlessRunner.html"><img class="imgAnimate" src="/images/dino-dash.png" alt="Photo 1"></a>
                     <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
                     <div id="projectDescription1" class="projectDescription">
-                        <p>For this project I wanted to learn how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
+                        <p>For this project I learned how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
                     </div>
                 </div>
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><img src="/images/demo.png" alt="Photo 2"></a>
-                    <h2 id="projectText2"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
+                    <a href="/src/weatherApp.html"><img class="imgAnimate" src="/images/weather-app.png" alt="Photo 2"></a>
+                    <h2 id="projectText2"><a href="/src/weatherApp.html">Weather App</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
                     <div id="projectDescription2" class="projectDescription">
-                        <p>For this project I wanted to learn how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
+                        <p>A Javascript weather app that pulls data from openweathermap.org. It takes a city name as input and outputs the appropriate weather data. This project helped me understand how to manage data using an API</p>
                     </div>
                 </div>
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><img src="/images/demo.png" alt="Photo 3"></a>
+                    <a href="/src/endlessRunner.html"><img class="imgAnimate" src="/images/dino-dash.png" alt="Photo 3"></a>
                     <h2 id="projectText3"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="3">More Info</span>
                     <div id="projectDescription3" class="projectDescription">
@@ -159,6 +170,17 @@
                     </div>
                 </div>
             </div>
+            <div class="projectModule">
+                <div class="projectPreview">
+                    <a href="/src/endlessRunner.html"><img class="imgAnimate" src="/images/dino-dash.png" alt="Photo 4"></a>
+                    <h2 id="projectText4"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
+                    <span class="toggle-description" data-toggle="description" data-id="4">More Info</span>
+                    <div id="projectDescription4" class="projectDescription">
+                        <p>For this project I wanted to learn how to make a simple game using Javascript. With the help of a library called Kaboom.js, I accomplished this and learned a few fun things along the way like parallax scrolling, sprite animation, and game loops</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
     <footer>
@@ -176,7 +198,9 @@
             <h4 id="footerText2"> Last updated June 2024</h4>
         </div>
     </footer>
+    <script src="jquery-3.7.1.min.js"></script>
     <script>
+        //function that 
         document.addEventListener('DOMContentLoaded', function() {
             // Select all toggle buttons
             const toggleButtons = document.querySelectorAll('.toggle-description');
@@ -198,6 +222,31 @@
                     }
                 });
             });
+        });
+
+        //jquery function that switches between png and gif on hover
+        var staticGifSuffix = ".png";
+        var gifSuffix = ".gif";
+
+        $(document).ready(function() {
+
+        $(".imgAnimate").each(function () {
+
+            $(this).hover(
+                function()
+                {
+                    var originalSrc = $(this).attr("src");
+                    $(this).attr("src", originalSrc.replace(staticGifSuffix, gifSuffix));
+                },
+                function()
+                {
+                    var originalSrc = $(this).attr("src");
+                    $(this).attr("src", originalSrc.replace(gifSuffix, staticGifSuffix));  
+                }
+            );
+
+        });
+
         });
     </script>
 </body>

@@ -8,6 +8,108 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
     <link rel="stylesheet" href="/src/portfolio.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .content {
+            box-sizing: border-box;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .aboutSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .photoSection {
+            max-width: 600px;
+            max-height: 650px;
+            border: 2px solid #64ffda;
+            border-radius: 50px;
+            margin: 40px 40px 100px;
+            overflow: hidden;
+            transition: border-radius .3s ease-in;
+        }
+        .photoSection img{
+            width: 100%;
+        }
+        .photoSection:hover{
+            border-radius: 500px;
+            cursor: pointer;
+            transition: border-radius .5s ease-out;
+        }
+        .description {
+            max-width: 550px;
+            max-height: 400px;
+            border-radius: 5px;
+            width: 100%;
+            margin: 100px 40px 100px;
+            float: left;
+            color: #e6f1ff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .description .hello{
+            font-size: 50pt;
+            
+        }
+        .description .name {
+            font-size: 50pt;
+            color: #64ffda;
+        }
+        .buttonWrapper {
+            margin-top: 30px;
+        }
+        .button {
+            display:inline-block;
+            border: 2px solid #46c4a7;
+            padding: 10px;
+            border-radius: 10px; 
+            text-decoration: none;
+            color: #46c4a7;
+            margin-right: 30px;
+            transition: all .2s ease-out;
+        }
+        .button:hover{
+            display:inline-block;
+            color: #64ffda;
+            border-color: #64ffda;
+            transform: scale(1.1);
+            transition: all .2s ease-in;
+        }
+        svg {
+            margin-left: 20px;
+        }
+        @media screen and (max-width: 768px) {
+
+        }
+        @media screen and (max-width: 768px) {
+
+            .description .hello{
+                font-size: 30pt;
+            
+            }
+            .description .name {
+                font-size: 30pt;
+            }
+            .buttonWrapper{
+                display: flex;
+                flex-direction: column;
+                margin:20px;
+            }
+            .button{
+                text-align: center;
+                justify-content: center;
+                margin-top: 30px;
+            }
+            .description {
+                margin: 100px 40px 40px;
+            }
+
+        }
+
+    </style>
 </head>
 <nav>
     <div class="logo-header">
@@ -19,8 +121,8 @@
             </div>
         </a>
         <div class="nameHeader">
-            <h1>Nicholas Paramore</h1>
-            <h2>Web Designer</h2>
+            <h1 class="nameTag">Nicholas Paramore</h1>
+            <h2 class="jobTag">Web Designer</h2>
         </div>
     </div>
     <ul class="nav-links">
@@ -39,10 +141,25 @@
 <script src="/src/js/portfolio.js"></script>
 <body>
     <div class="content">
-        
-        <div class="description">
-            <h3></h3>
-            <p></p>
+        <div class="aboutSection">
+            <div class="description">
+                <p class="job">Web Designer</p>
+                <h2 class="hello">Hello I'm</h2>
+                <h2 class="name">Nick Paramore</h2>
+                <p class="desc">I love developing creative designs and layouts for other people to enjoy.</p>
+                <div class="buttonWrapper">
+                    <a href="/images/Resume.pdf" target="_blank" class="button">Download Resume<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                      </svg></a>
+                    <a href="mailto:nickparamore1@gmail.com" class="button">Contact Me <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                      </svg></a>
+                </div>
+            </div>
+            <div class="photoSection">
+                <a href="mailto:nickparamore1@gmail.com"><img src="/images/IMG_0629.JPG"></a>
+            </div>
         </div>
     </div>
 </body>
