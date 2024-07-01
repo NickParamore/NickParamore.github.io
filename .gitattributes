@@ -1,2 +1,8 @@
+images/rainy.mp4 filter=lfs diff=lfs merge=lfs -text
+images/stormy.mp4 filter=lfs diff=lfs merge=lfs -text
+images/cloudy.mp4 filter=lfs diff=lfs merge=lfs -text
+images/dino-dash.gif filter=lfs diff=lfs merge=lfs -text
+images/sunny.mp4 filter=lfs diff=lfs merge=lfs -text
+images/weather-app.gif filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
