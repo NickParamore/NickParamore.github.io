@@ -56,6 +56,11 @@
             height: auto;
             cursor: pointer;
         }
+        .content .moduleContainer .projectModule .projectPreview video{
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
         .content .moduleContainer .projectModule .projectPreview a{
             color: #e6f1ff;
             font-weight: 300;
@@ -142,7 +147,7 @@
         <div class="moduleContainer">
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><img class="imgAnimate" src="/images/dino-dash.png" alt="Photo 1"></a>
+                    <a href="/src/endlessRunner.html"><video loop src="/images/dino-dash.mp4" alt="Video 1"></a>
                     <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
                     <div id="projectDescription1" class="projectDescription">
@@ -152,7 +157,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/weatherApp.html"><img class="imgAnimate" src="/images/weather-app.png" alt="Photo 2"></a>
+                    <a href="/src/weatherApp.html"><video loop src="/images/weather-app.mp4" alt="Video 2"></a>
                     <h2 id="projectText2"><a href="/src/weatherApp.html">Weather App</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
                     <div id="projectDescription2" class="projectDescription">
@@ -162,7 +167,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><img class="imgAnimate" src="/images/dino-dash.png" alt="Photo 3"></a>
+                    <a href="/src/endlessRunner.html"><video loop src="/images/dino-dash.mp4" alt="Video 3"></a>
                     <h2 id="projectText3"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="3">More Info</span>
                     <div id="projectDescription3" class="projectDescription">
@@ -172,7 +177,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><img class="imgAnimate" src="/images/dino-dash.png" alt="Photo 4"></a>
+                    <a href="/src/endlessRunner.html"><video loop src="/images/dino-dash.mp4" alt="Video 4"></a>
                     <h2 id="projectText4"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="4">More Info</span>
                     <div id="projectDescription4" class="projectDescription">
@@ -230,21 +235,14 @@
 
         $(document).ready(function() {
 
-        $(".imgAnimate").each(function () {
+        $("a").hover(function () {
 
-            $(this).hover(
-                function()
-                {
-                    var originalSrc = $(this).attr("src");
-                    $(this).attr("src", originalSrc.replace(staticGifSuffix, gifSuffix));
-                },
-                function()
-                {
-                    var originalSrc = $(this).attr("src");
-                    $(this).attr("src", originalSrc.replace(gifSuffix, staticGifSuffix));  
-                }
-            );
+            $(this).children("video")[0].play();
 
+        }, function () {
+            var el = $(this).children("video")[0];
+            el.pause();
+            el.currentTime = 0;
         });
 
         });
