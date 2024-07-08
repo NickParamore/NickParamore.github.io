@@ -211,19 +211,16 @@
             // Select all videos
             const videos = document.querySelectorAll('video');
 
-            // Ensure all videos are muted and paused when the page loads
-            videos.forEach(video => {
-                video.muted = true; // Ensure video is muted
-                video.pause();
-            });
-
             // Function to pause all videos and reset their time
             function pauseAndResetAllVideos() {
                 videos.forEach(video => {
+                    video.autoplay = true;
+                    video.muted = true; // Ensure video is muted
                     video.pause();
                     video.currentTime = 0;
                 });
             }
+            pauseAndResetAllVideos();
 
             // Pause and reset all videos when the page becomes hidden
             document.addEventListener('visibilitychange', function() {
