@@ -232,6 +232,10 @@
                 }
             });
 
+            // Pause and reset all videos when the page is hidden or shown on mobile devices
+            window.addEventListener('pagehide', pauseAndResetAllVideos);
+            window.addEventListener('pageshow', pauseAndResetAllVideos);
+
             // Select all project modules
             const projectModules = document.querySelectorAll('.projectModule');
 
