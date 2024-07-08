@@ -211,10 +211,26 @@
             // Select all videos
             const videos = document.querySelectorAll('video');
 
-            // Pause all videos when the page loads
+            // Ensure all videos are muted and paused when the page loads
             videos.forEach(video => {
+                video.muted = true; // Ensure video is muted
                 video.pause();
             });
+
+            // Function to pause all videos
+            function pauseAllVideos() {
+                videos.forEach(video => {
+                    video.pause();
+                });
+            }
+
+            // Pause all videos when the page becomes hidden
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    pauseAllVideos();
+                }
+            });
+
             // Select all project modules
             const projectModules = document.querySelectorAll('.projectModule');
 
