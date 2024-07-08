@@ -147,7 +147,7 @@
         <div class="moduleContainer">
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><video loop playsinline autoplay src="/images/dino-dash.mp4" class="vid"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid"></a>
                     <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
                     <div id="projectDescription1" class="projectDescription">
@@ -158,7 +158,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/weatherApp.html"><video loop playsinline autoplay src="/images/weather-app.mp4" class="vid"></a>
+                    <a href="/src/weatherApp.html"><video muted loop playsinline autoplay src="/images/weather-app.mp4" class="vid"></a>
                     <h2 id="projectText2"><a href="/src/weatherApp.html">Weather App</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
                     <div id="projectDescription2" class="projectDescription">
@@ -168,7 +168,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/cssFrog.html"><video loop playsinline autoplay src="/images/css-frog.mp4" class="vid"></a>
+                    <a href="/src/cssFrog.html"><video muted loop playsinline autoplay src="/images/css-frog.mp4" class="vid"></a>
                     <h2 id="projectText3"><a href="/src/cssFrog.html">Pure CSS Frog</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="3">More Info</span>
                     <div id="projectDescription3" class="projectDescription">
@@ -178,7 +178,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><video loop  playsinline autoplay src="/images/dino-dash.mp4" class="vid"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid"></a>
                     <h2 id="projectText4"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="4">More Info</span>
                     <div id="projectDescription4" class="projectDescription">
@@ -207,22 +207,30 @@
     <script src="jquery-3.7.1.min.js"></script>
     <script>
 
-        const vid = document.querySelectorAll('.vid');
-        for (let i=0; i<vid.length; i++){
-            vid[i].pause()
-            vid[i].addEventListener('mouseenter',
-            function(e){
-                vid[i].play()
-            })
-            vid[i].addEventListener('mouseout',
-            function(e){
-                vid[i].pause()
-            })
-        }
-
-
-        //function that 
         document.addEventListener('DOMContentLoaded', function() {
+            // Select all videos
+            const videos = document.querySelectorAll('video');
+
+            // Pause all videos when the page loads
+            videos.forEach(video => {
+                video.pause();
+            });
+            // Select all project modules
+            const projectModules = document.querySelectorAll('.projectModule');
+
+            // Attach hover event listeners to each project module
+            projectModules.forEach(module => {
+                const video = module.querySelector('video');
+                
+                module.addEventListener('mouseenter', function() {
+                    video.play();
+                });
+
+                module.addEventListener('mouseleave', function() {
+                    video.pause();
+                });
+            });
+
             // Select all toggle buttons
             const toggleButtons = document.querySelectorAll('.toggle-description');
 
