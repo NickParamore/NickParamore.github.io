@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,*::after,*::before{
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background-color: rgb(30, 30, 30);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1em;
+            font-size: clamp(.5rem, 2.5vmin, 1.5rem);
+        }
+        .keyboard{
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(20, minmax(auto, 1.25em));
+            grid-auto-rows: 3em;
+            gap: .25em;
+        }
+        .key{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: inherit;
+            grid-column: span 2;
+            border: none;
+            padding: 0;
+            border-radius: .25em;
+            background-color: rgb(124, 124, 124);
+            color: rgb(255, 241, 215);
+            cursor: pointer;
+            user-select: none;
+        }
+        .key:hover,.key:focus{
+            opacity: .5;
+        }
+        .space.big{
+            grid-column: span 3;
+
+        }
+        .word{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3em;
+            gap: .8em
+        }
+        .letter{
+            font-size: 3em;
+            border-bottom: 5px solid rgb(255, 241, 215);
+            padding: .3em;
+            color: rgb(255, 241, 215);
+        }
+    </style>
+</head>
+<body>
+    <div class="word">
+        <div class="letter">A</div>
+        <div class="letter">A</div>
+        <div class="letter">A</div>
+        <div class="letter">A</div>
+        <div class="letter">A</div>
+    </div>
+    <div class="keyboard">
+        <button class="key">Q</button>
+        <button class="key">W</button>
+        <button class="key">E</button>
+        <button class="key">R</button>
+        <button class="key">T</button>
+        <button class="key">Y</button>
+        <button class="key">U</button>
+        <button class="key">I</button>
+        <button class="key">O</button>
+        <button class="key">P</button>
+        <div class="space"></div>
+        <button class="key">A</button>
+        <button class="key">S</button>
+        <button class="key">D</button>
+        <button class="key">F</button>
+        <button class="key">G</button>
+        <button class="key">H</button>
+        <button class="key">J</button>
+        <button class="key">K</button>
+        <button class="key">L</button>
+        <div class="space"></div>
+        <div class="space big"></div>
+        <button class="key">Z</button>
+        <button class="key">X</button>
+        <button class="key">C</button>
+        <button class="key">V</button>
+        <button class="key">B</button>
+        <button class="key">N</button>
+        <button class="key">M</button>
+        <div class="space big"></div>
+    </div>
+</body>
+<script>
+    async function getData() {
+    const url = "/src/js/dictionary.json";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        const randomWord = json[Math.floor(Math.random() * json.length)];
+        console.log(randomWord);
+    } catch (error) {
+        console.error(error.message);
+    }
+    }
+    getData()
+</script>
+</html>

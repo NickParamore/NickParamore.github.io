@@ -8,21 +8,24 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
     <link rel="stylesheet" href="/src/portfolio.css">
     <link rel="stylesheet" href="/libraries/lightbox.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         .content{
             padding: 100px;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
             padding-top: 0px;
         }
         .graphics-header {
             color: #e6f1ff;
             letter-spacing: 2px;
-            font-size: 30px;
-            font-weight: bold;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
+            font-family: "Poppins", sans-serif;
+            font-weight:500;
+            font-size: 25px;
+            text-align: center;
             padding-bottom: 40px;
             padding-top: 40px;
         }
@@ -46,7 +49,15 @@
             transition: transform 0.2s ease-in;
             border: 2px solid #64ffda;
         }
+        @media screen and (max-width: 768px) {
+            .content{
+                padding: 50px;
+            }
+            .graphics-header {
+                padding-top: 0px;
+            }
 
+        }
 
 
 

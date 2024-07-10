@@ -15,7 +15,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            padding-top: 100px;
+            align-items: center;
         }
         .aboutSection {
             display: flex;
@@ -23,8 +23,10 @@
             flex-wrap: wrap;
         }
         .photoSection {
+            display: flex;
+            justify-content: center;
             max-width: 600px;
-            max-height: 650px;
+            max-height: 600px;
             border: 2px solid #64ffda;
             border-radius: 50px;
             margin: 40px 40px 100px;
@@ -44,7 +46,7 @@
             max-height: 400px;
             border-radius: 5px;
             width: 100%;
-            margin: 100px 40px 100px;
+            margin: 100px 40px 10px;
             float: left;
             color: #e6f1ff;
             font-family: 'Poppins', sans-serif;
@@ -59,6 +61,9 @@
         }
         .buttonWrapper {
             margin-top: 30px;
+            display: flex;
+            justify-content: left;
+            align-items: center;
         }
         .button {
             display:inline-block;
@@ -82,9 +87,15 @@
         }
         @media screen and (max-width: 768px) {
 
-        }
-        @media screen and (max-width: 768px) {
-
+            .description {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                flex-direction: column;
+            }
             .description .hello{
                 font-size: 30pt;
             
@@ -102,8 +113,11 @@
                 justify-content: center;
                 margin-top: 30px;
             }
-            .description {
-                margin: 100px 40px 40px;
+
+            .photoSection {
+                max-width: 350px;
+                max-height: 350px;
+                margin: 20px;
             }
 
         }
