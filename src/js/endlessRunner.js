@@ -54,7 +54,7 @@ import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
             loadSound("jump", "../images/jump2.mp3")
             loadSound("chomp", "../images/chomp.mp3")
             loadSound("power", "../images/power.mp3")
-            loadSound("gameover", "../images/gameover.mp3")
+            loadSound("gameover", "../images/gameOver.mp3")
             loadSound("rockBreak", "../images/rockBreak.mp3")
             loadSound("plantBreak", "../images/plantBreak.mp3")
             loadSound("gameStart", "../images/gameStart.mp3")

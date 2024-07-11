@@ -162,7 +162,7 @@
         <div class="moduleContainer">
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid" type="video/mp4"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline src="/images/dino-dash.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
                     <div id="projectDescription1" class="projectDescription">
@@ -173,7 +173,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/weatherApp.html"><video muted loop playsinline autoplay src="/images/weather-app.mp4" class="vid" type="video/mp4"></a>
+                    <a href="/src/weatherApp.html"><video muted loop playsinline src="/images/weather-app.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText2"><a href="/src/weatherApp.html">Weather App</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
                     <div id="projectDescription2" class="projectDescription">
@@ -183,7 +183,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/cssFrog.html"><video muted loop playsinline autoplay src="/images/css-frog.mp4" class="vid" type="video/mp4"></a>
+                    <a href="/src/cssFrog.html"><video muted loop playsinline src="/images/css-frog.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText3"><a href="/src/cssFrog.html">Pure CSS Frog</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="3">More Info</span>
                     <div id="projectDescription3" class="projectDescription">
@@ -193,7 +193,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid" type="video/mp4"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline src="/images/dino-dash.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText4"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="4">More Info</span>
                     <div id="projectDescription4" class="projectDescription">
@@ -229,7 +229,7 @@
             // Function to pause all videos and reset their time
             function pauseAndResetAllVideos() {
                 videos.forEach(video => {
-                    video.autoplay = true;
+                    video.play();
                     video.muted = true; // Ensure video is muted
                     video.pause();
                     video.currentTime = 0;
