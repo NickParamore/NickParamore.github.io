@@ -7,28 +7,30 @@
     <title>Portfolio</title>
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
     <link rel="stylesheet" href="/src/portfolio.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <style>
-        .content {
-            font-family: 'Poppins', sans-serif;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none; border: none;
-            text-decoration: none;
-            text-transform: none;
-            padding-top: 100px;
+        *::-webkit-media-controls-start-playback-button {
+        display: none!important;
+        -webkit-appearance: none;
         }
         .content {
-            padding: 15px 20px;
-            padding-bottom: 100px;
+            font-family: 'Poppins', sans-serif;
+            padding: 100px;
+            padding-top: 0px;
+            box-sizing: border-box;
         }
         .content .projectsHeading {
             text-align: center;
-            padding-bottom: 15px;
+            padding-bottom: 40px;
+            padding-top: 40px;
             color: #e6f1ff;
-            font-size: 50px;
+            letter-spacing: 2px;
+            font-weight:500;
+            font-size: 25px;
+        }
+        .titleDivider {
+            height: 40px;
+            border-top: 2px solid #4b6599;
         }
 
         .content .moduleContainer {
@@ -36,6 +38,8 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            gap: 3rem;
+
 
         }
         .content .moduleContainer .projectModule {
@@ -43,9 +47,8 @@
             max-width: 500px;
             max-height: 600px;
             display: flex;
-            justify-content: center;
+            justify-content:center;
             align-items: center;
-            margin: 30px;
             border: 3px solid #4b6599;
             border-radius: 5px;
             text-align: center;
@@ -77,7 +80,7 @@
             font-size: 11pt;
             text-decoration: none;
         }
-        .content .moduleContainer .projectModule:hover{
+        .content .moduleContainer .projectModule:hover, .projectModule:focus, .projectModule:active{
             border: 3px solid #64ffda;
             background: #203453;
             transform: scale(1.1);
@@ -112,19 +115,14 @@
             color: #64ffda;;
             border: 1px solid #64ffda;
         }
-        /* Play button overlay styles */
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: url('/images/play-icon.png') no-repeat center center;
-            background-size: contain;
-            cursor: pointer;
-            z-index: 1;
-            pointer-events: none; /* Prevent blocking hover events */
+        @media screen and (max-width: 768px) {
+            .content{
+                padding: 50px;
+            }
+            .content .projectsHeading {
+                padding-top: 0px;
+            }
+
         }
     </style>
 </head>
@@ -159,12 +157,12 @@
     <script src="/src/js/portfolio.js"></script>
     
     <div class="content">
-        <h2 class="projectsHeading"> Projects</h2>
+        <h2 class="projectsHeading">Coding Projects</h2>
+        <div class="titleDivider"></div>
         <div class="moduleContainer">
             <div class="projectModule">
                 <div class="projectPreview">
-                    <div class="play-button"></div>
-                    <a href="/src/endlessRunner.html"><video loop playsinline src="/images/dino-dash.mp4" class="vid"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
                     <div id="projectDescription1" class="projectDescription">
@@ -175,8 +173,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <div class="play-button"></div>
-                    <a href="/src/weatherApp.html"><video loop playsinline src="/images/weather-app.mp4" class="vid"></a>
+                    <a href="/src/weatherApp.html"><video muted loop playsinline autoplay src="/images/weather-app.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText2"><a href="/src/weatherApp.html">Weather App</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
                     <div id="projectDescription2" class="projectDescription">
@@ -186,8 +183,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <div class="play-button"></div>
-                    <a href="/src/cssFrog.html"><video loop playsinline src="/images/css-frog.mp4" class="vid"></a>
+                    <a href="/src/cssFrog.html"><video muted loop playsinline autoplay src="/images/css-frog.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText3"><a href="/src/cssFrog.html">Pure CSS Frog</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="3">More Info</span>
                     <div id="projectDescription3" class="projectDescription">
@@ -197,8 +193,7 @@
             </div>
             <div class="projectModule">
                 <div class="projectPreview">
-                    <div class="play-button"></div>
-                    <a href="/src/endlessRunner.html"><video loop playsinline src="/images/dino-dash.mp4" class="vid"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid" type="video/mp4"></a>
                     <h2 id="projectText4"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="4">More Info</span>
                     <div id="projectDescription4" class="projectDescription">
@@ -206,6 +201,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <footer>
@@ -225,48 +221,32 @@
     </footer>
     <script src="jquery-3.7.1.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Select all videos and play buttons
-            const videos = document.querySelectorAll('video');
-            const playButtons = document.querySelectorAll('.play-button');
 
-            // Ensure all videos are muted and paused when the page loads
-            videos.forEach(video => {
-                video.muted = true; // Ensure video is muted
-                video.pause();
-                video.currentTime = 0; // Reset video to the beginning frame
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all videos
+            const videos = document.querySelectorAll('video');
 
             // Function to pause all videos and reset their time
             function pauseAndResetAllVideos() {
                 videos.forEach(video => {
+                    video.autoplay = true;
+                    video.muted = true; // Ensure video is muted
                     video.pause();
                     video.currentTime = 0;
                 });
             }
+            pauseAndResetAllVideos();
 
-            // Pause and reset all videos when the page is hidden or shown
-            window.addEventListener('pagehide', pauseAndResetAllVideos);
-            window.addEventListener('pageshow', pauseAndResetAllVideos);
-
-            // Pause and reset all videos when the page visibility changes
+            // Pause and reset all videos when the page becomes hidden
             document.addEventListener('visibilitychange', function() {
                 if (document.hidden) {
                     pauseAndResetAllVideos();
                 }
             });
 
-            // Attach click event listeners to play buttons and videos
-            playButtons.forEach((button, index) => {
-                const video = videos[index];
-                button.addEventListener('click', function() {
-                    video.play();
-                });
-                video.addEventListener('click', function() {
-                    video.pause();
-                    video.currentTime = 0;
-                });
-            });
+            // Pause and reset all videos when the page is hidden or shown on mobile devices
+            window.addEventListener('pagehide', pauseAndResetAllVideos);
+            window.addEventListener('pageshow', pauseAndResetAllVideos);
 
             // Select all project modules
             const projectModules = document.querySelectorAll('.projectModule');
