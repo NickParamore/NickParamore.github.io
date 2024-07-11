@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/src/portfolio.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <style>
+        *::-webkit-media-controls-start-playback-button {
+        display: none!important;
+        -webkit-appearance: none;
+        }
         .content {
             font-family: 'Poppins', sans-serif;
             padding: 100px;
@@ -158,7 +162,7 @@
         <div class="moduleContainer">
             <div class="projectModule">
                 <div class="projectPreview">
-                    <a href="/src/endlessRunner.html"><video muted loop playsinline poster="/images/dino-dash_pic.jpg" src="/images/dino-dash.mp4" class="vid"></a>
+                    <a href="/src/endlessRunner.html"><video muted loop playsinline autoplay src="/images/dino-dash.mp4" class="vid"></a>
                     <h2 id="projectText1"><a href="/src/endlessRunner.html">Endless Runner Game</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="1">More Info</span>
                     <div id="projectDescription1" class="projectDescription">
@@ -225,6 +229,7 @@
             // Function to pause all videos and reset their time
             function pauseAndResetAllVideos() {
                 videos.forEach(video => {
+                    video.autoplay = true;
                     video.muted = true; // Ensure video is muted
                     video.pause();
                     video.currentTime = 0;
