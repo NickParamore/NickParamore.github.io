@@ -1,8 +1,8 @@
-import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
+import kaplay from "https://unpkg.com/kaplay@3001.0.0-alpha.17/dist/kaboom.mjs";
 
             let gameSize = 1
-            // initialize kaboom context
-            let k = kaboom({
+            // initialize kaplay context
+            let k = kaplay({
                 height:700,
                 width: 1000,
                 canvas: document.querySelector('#gameCanvas'),
@@ -43,22 +43,22 @@ import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
                     },
                 },
             }),
-            loadSprite("controls", "../images/controls-01.png");
-            loadSprite("paperTex", "../images/paperTexture-03.png");
-            loadSprite("leaves", "../images/leaves-01.png");
-            loadSprite("floor", "../images/floor-01.png");
-            loadSprite("rocks","../images/rocks-01.png");
-            loadSprite("bush","../images/bush-01.png");
-            loadSprite("plant","../images/plant-01.png");
-            loadSprite("pineapple","../images/pineapple-01.png");
-            loadFont("test", "../images/Bungee-Regular.ttf");
-            loadSound("jump", "../images/jump2.mp3")
-            loadSound("chomp", "../images/chomp.mp3")
-            loadSound("power", "../images/power.mp3")
-            loadSound("gameover", "../images/gameOver.mp3")
-            loadSound("rockBreak", "../images/rockBreak.mp3")
-            loadSound("plantBreak", "../images/plantBreak.mp3")
-            loadSound("gameStart", "../images/gameStart.mp3")
+            loadSprite("controls", "../images/controls-01.png"),
+            loadSprite("paperTex", "../images/paperTexture-03.png"),
+            loadSprite("leaves", "../images/leaves-01.png"),
+            loadSprite("floor", "../images/floor-01.png"),
+            loadSprite("rocks","../images/rocks-01.png"),
+            loadSprite("bush","../images/bush-01.png"),
+            loadSprite("plant","../images/plant-01.png"),
+            loadSprite("pineapple","../images/pineapple-01.png"),
+            loadFont("test", "../images/Bungee-Regular.ttf"),
+            loadSound("jump", "../images/jump2.mp3"),
+            loadSound("chomp", "../images/chomp.mp3"),
+            loadSound("power", "../images/power.mp3"),
+            loadSound("gameover", "../images/gameOver.mp3"),
+            loadSound("rockBreak", "../images/rockBreak.mp3"),
+            loadSound("plantBreak", "../images/plantBreak.mp3"),
+            loadSound("gameStart", "../images/gameStart.mp3"),
 
 
             //create game scene
