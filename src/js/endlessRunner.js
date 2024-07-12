@@ -1,4 +1,5 @@
 import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
+
             let gameSize = 1
             // initialize kaboom context
             let k = kaboom({
