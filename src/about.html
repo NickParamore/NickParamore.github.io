@@ -43,20 +43,20 @@
             cursor: pointer;
             transition: border-radius .5s ease-out;
         }
-        .description {
+        .left-desc {
             max-width: 550px;
             border-radius: 5px;
             width: 100%;
-            margin: 100px 40px 10px;
+            margin: 100px 40px 100px;
             float: left;
             color: #e6f1ff;
             font-family: 'Poppins', sans-serif;
         }
-        .description .hello, .description .name {
+        .left-desc .hello, .left-desc .name {
             font-size: 50pt;
             line-height: 85px;
         }
-        .description .name {
+        .left-desc .name {
             color: #64ffda;
         }
         .buttonWrapper {
@@ -143,10 +143,10 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            margin: 100px 40px 10px;
+            margin: 100px 40px 100px;
         }
         @media screen and (max-width: 768px) {
-            .description {
+            .left-desc {
                 display: block;
                 width: fit-content;
                 margin: 0 auto;
@@ -160,9 +160,10 @@
                 float: none;
             }
             .right-desc{
-                margin: 0px
+                margin: 0px;
+                margin-bottom:40px;
             }
-            .description .hello, .description .name {
+            .left-desc .hello, .left-desc .name {
                 font-size: 30pt;
                 line-height: 65px;
             }
@@ -208,7 +209,7 @@
     <ul class="nav-links">
         <li><a href="/src/index.html">Home</a></li>
         <li><a href="/src/graphics.html">Graphics</a></li>
-        <li><a href="/src/code.html">Code</a></li>
+        <li><a href="/src/web.html">Web</a></li>
         <li><a href="/src/about.html">About</a></li>
     </ul>
     <div class="burger">
@@ -222,7 +223,7 @@
 <body>
     <div class="content">
         <div class="aboutSection">
-            <div class="description">
+            <div class="left-desc">
                 <p class="job">Web Designer</p>
                 <h2 class="hello">Hello I'm</h2>
                 <h2 class="name">Nick Paramore</h2>
@@ -230,7 +231,7 @@
 
                     Fusce auctor, ex eu efficitur commodo, ante diam fermentum quam, id commodo massa ligula ac mauris. Sed sed ornare lacus, ac facilisis nulla. Donec massa odio, malesuada non bibendum quis, vehicula quis ipsum. Phasellus hendrerit erat ipsum, id eleifend mauris dapibus id. Phasellus iaculis, odio sollicitudin cursus bibendum, felis lectus semper mi, at blandit arcu tortor vitae arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed odio diam, vestibulum at ante vel, commodo viverra nisl. Etiam lobortis sed sem non aliquet. Nunc ac iaculis dolor. Mauris sed ipsum placerat, facilisis erat laoreet, ornare ante. Pellentesque eu maximus dui. Curabitur tempus libero eleifend, pulvinar nunc sit amet, fermentum mi.</p>
                 <div class="buttonWrapper">
-                    <a href="" target="_blank" class="button">Download Resume<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <a href="" target="" class="button">Download Resume<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
                       </svg></a>
@@ -316,7 +317,7 @@
             <div class="miniN2"></div>
             <div class="miniN3"></div>
         </div>
-        <h4 id="footerText2"> Last updated June 2024</h4>
+        <h4 id="footerText2"> Last updated July 2024</h4>
     </div>
 </footer>
 </html>
