@@ -27,11 +27,11 @@
         .photoSection {
             display: flex;
             justify-content: center;
-            max-width: 600px;
-            max-height: 600px;
+            max-width: 400px;
+            max-height: 400px;
             border: 2px solid #64ffda;
             border-radius: 50px;
-            margin: 40px 40px 100px;
+            
             overflow: hidden;
             transition: border-radius .3s ease-in;
         }
@@ -45,7 +45,6 @@
         }
         .description {
             max-width: 550px;
-            max-height: 400px;
             border-radius: 5px;
             width: 100%;
             margin: 100px 40px 10px;
@@ -53,12 +52,11 @@
             color: #e6f1ff;
             font-family: 'Poppins', sans-serif;
         }
-        .description .hello{
+        .description .hello, .description .name {
             font-size: 50pt;
-            
+            line-height: 85px;
         }
         .description .name {
-            font-size: 50pt;
             color: #64ffda;
         }
         .buttonWrapper {
@@ -87,21 +85,86 @@
         svg {
             margin-left: 20px;
         }
+        form{
+            display: flex;
+            flex-direction: column;
+            background-color: hsl(166, 52%, 52%,15%);
+            border: 2px solid #46c4a7;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            width: 400px;
+            font-family: 'Poppins', sans-serif;
+        }
+        form h3 {
+            color:#e6f1ff;
+            font-weight: 300;
+        }
+        form input, form textarea {
+            font-family: 'Poppins', sans-serif;
+            color: #e6f1ff;
+            max-width: 500px; 
+            max-height: 600px;
+            border: 0;
+            margin: 10px 0;
+            padding: 5px;
+            outline: none;
+            font-size: 15px;
+            background: transparent;
+            border: 2px solid #46c4a7;
+            border-radius: 5px;
+        }
+        form input::placeholder, form textarea::placeholder {
+            color: #abb3be;
+        }
+        form button{
+            font-family: 'Poppins', sans-serif;
+            width: 150px;
+            margin: 0 auto;
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            background: #267562;
+            color: #e6f1ff;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+        form button:hover{
+            background: #2e7b69;
+        }
+        #result{
+            color: #e6f1ff;
+        }
+        .right-desc{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 100px 40px 10px;
+        }
         @media screen and (max-width: 768px) {
             .description {
+                display: block;
+                width: fit-content;
+                margin: 0 auto;
+                box-sizing: border-box;
                 margin: 20px;
                 margin-top: 60px;
-                padding: 0;
                 justify-content: center;
                 text-align: center;
                 align-items: center;
+                padding: 40px;
+                float: none;
             }
-            .description .hello{
-                font-size: 30pt;
-            
+            .right-desc{
+                margin: 0px
             }
-            .description .name {
+            .description .hello, .description .name {
                 font-size: 30pt;
+                line-height: 65px;
             }
             .buttonWrapper{
                 display: flex;
@@ -118,12 +181,15 @@
             .photoSection {
                 max-width: 350px;
                 max-height: 350px;
-                margin: 20px;
+            }
+            form{
+                width: 350px;
             }
 
         }
 
     </style>
+    
 </head>
 <nav>
     <div class="logo-header">
@@ -160,9 +226,11 @@
                 <p class="job">Web Designer</p>
                 <h2 class="hello">Hello I'm</h2>
                 <h2 class="name">Nick Paramore</h2>
-                <p class="desc">I love developing creative designs and layouts for other people to enjoy.</p>
+                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper iaculis scelerisque. Nulla non risus dapibus, hendrerit ligula non, sodales risus. Nullam eu iaculis magna. Donec facilisis dui ut elit tincidunt, nec sollicitudin mi commodo. Donec et posuere lacus. Aliquam et libero finibus tortor auctor vestibulum. Ut volutpat purus vel mi imperdiet, sit amet finibus est facilisis. Sed ut eros nec erat rutrum vulputate semper vitae nibh. Proin sed placerat ante. Aliquam erat volutpat. Morbi elementum blandit congue. Sed pharetra nibh elit, vitae consequat nulla lacinia eu. Nunc gravida sapien mauris. Aenean pharetra molestie mi, ut fermentum augue ultricies sed.
+
+                    Fusce auctor, ex eu efficitur commodo, ante diam fermentum quam, id commodo massa ligula ac mauris. Sed sed ornare lacus, ac facilisis nulla. Donec massa odio, malesuada non bibendum quis, vehicula quis ipsum. Phasellus hendrerit erat ipsum, id eleifend mauris dapibus id. Phasellus iaculis, odio sollicitudin cursus bibendum, felis lectus semper mi, at blandit arcu tortor vitae arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed odio diam, vestibulum at ante vel, commodo viverra nisl. Etiam lobortis sed sem non aliquet. Nunc ac iaculis dolor. Mauris sed ipsum placerat, facilisis erat laoreet, ornare ante. Pellentesque eu maximus dui. Curabitur tempus libero eleifend, pulvinar nunc sit amet, fermentum mi.</p>
                 <div class="buttonWrapper">
-                    <a href="/images/Resume.pdf" target="_blank" class="button">Download Resume<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <a href="" target="_blank" class="button">Download Resume<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
                       </svg></a>
@@ -171,9 +239,68 @@
                       </svg></a>
                 </div>
             </div>
-            <div class="photoSection">
-                <a href="mailto:nickparamore1@gmail.com"><img src="/images/IMG_0629.JPG"></a>
+            <div class="right-desc">
+                <div class="photoSection">
+                    <a href=""><img src="/images/IMG_0629.JPG"></a>
+                </div>
+                <form method="POST" id="form">
+                    <h3>Contact Me</h3>
+                    <input type="hidden" name="access_key" value="b9096035-feee-41da-9761-f4f328080b5f">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="phone" placeholder="Phone #" required>
+                    <textarea id="message" rows="4" name="message" placeholder="Message"></textarea>
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <button type="submit">Send</button>
+                    <div id="result"></div>
+                </form>
             </div>
+            
+            <script>
+                function onSubmit(token) {
+                  document.getElementById("form").submit();
+                }
+              </script>
+            <script>
+                const form = document.getElementById('form');
+                const result = document.getElementById('result');
+                
+                form.addEventListener('submit', function(e) {
+                  e.preventDefault();
+                  const formData = new FormData(form);
+                  const object = Object.fromEntries(formData);
+                  const json = JSON.stringify(object);
+                  result.innerHTML = "Please wait..."
+                
+                    fetch('https://api.web3forms.com/submit', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: json
+                        })
+                        .then(async (response) => {
+                            let json = await response.json();
+                            if (response.status == 200) {
+                                result.innerHTML = "Form submitted successfully";
+                            } else {
+                                console.log(response);
+                                result.innerHTML = json.message;
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            result.innerHTML = "Something went wrong!";
+                        })
+                        .then(function() {
+                            form.reset();
+                            setTimeout(() => {
+                                result.style.display = "none";
+                            }, 3000);
+                        });
+                });
+                </script>
         </div>
     </div>
 </body>
