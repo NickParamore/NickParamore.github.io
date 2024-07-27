@@ -1,9 +1,9 @@
 import kaplay from "https://unpkg.com/kaplay@3001.0.0-alpha.17/dist/kaboom.mjs";
 
             let gameSize = 1
-            // initialize kaplay context
+            // initialize kaboom context
             let k = kaplay({
-                height:700,
+                height:700, 
                 width: 1000,
                 canvas: document.querySelector('#gameCanvas'),
                 background: [ 200, 200, 255, ], 
@@ -55,10 +55,10 @@ import kaplay from "https://unpkg.com/kaplay@3001.0.0-alpha.17/dist/kaboom.mjs";
             loadSound("jump", "../images/jump2.mp3"),
             loadSound("chomp", "../images/chomp.mp3"),
             loadSound("power", "../images/power.mp3"),
+            loadSound("gameover", "../images/gameOver.mp3"),
             loadSound("rockBreak", "../images/rockBreak.mp3"),
             loadSound("plantBreak", "../images/plantBreak.mp3"),
             loadSound("gameStart", "../images/gameStart.mp3"),
-            loadSound("gameOver", "../images/gameOver.mp3"),
 
 
             //create game scene
@@ -423,7 +423,7 @@ import kaplay from "https://unpkg.com/kaplay@3001.0.0-alpha.17/dist/kaboom.mjs";
                         play('plantBreak'),
                         destroy(obstacle)           
                     }else{
-                        play('gameOver')
+                        play('gameover')
                         go("lose", score);
                     }
                 })
@@ -432,7 +432,7 @@ import kaplay from "https://unpkg.com/kaplay@3001.0.0-alpha.17/dist/kaboom.mjs";
                         play('plantBreak'),
                         destroy(obstacle2)           
                     }else{
-                        play('gameOver')
+                        play('gameover')
                         go("lose", score);
                     }
                 })
@@ -443,7 +443,7 @@ import kaplay from "https://unpkg.com/kaplay@3001.0.0-alpha.17/dist/kaboom.mjs";
                         }),
                         destroy(obstacle3)           
                     }else{
-                        play('gameOver')
+                        play('gameover')
                         go("lose", score);
                     }
                 })
