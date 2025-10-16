@@ -12,6 +12,13 @@
         canvas {
             display: block;
             width:100%;
+            opacity: 0;
+            animation: fadeBubbles 2s ease-out forwards;
+        }
+        @keyframes fadeBubbles {
+        to {
+            opacity: 1;
+        }
         }
         body {
             background-color: #0d1f3a;

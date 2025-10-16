@@ -8,18 +8,20 @@ function resizeCanvas() {
 }
 resizeCanvas();
 
-let spots = [];
+let trail = [];
+const maxTrailLength = 30; // How many points the trail keeps
+const trailFade = 0.05;    // Opacity reduction per frame
 let hue = 0;
-let numberOfBubbles = 100;
-let bubbleSize = 80;
+let numberOfBubbles = 0;
+let bubbleSize = 0;
 
 function scaleBubbles() {
     if (window.innerWidth > 1000) {
-        numberOfBubbles = 100;
+        numberOfBubbles = 30;
         bubbleSize = 80;
     } else {
-        numberOfBubbles = 50;
-        bubbleSize = 40;
+        numberOfBubbles = 15;
+        bubbleSize = 70;
     }
 }
 scaleBubbles();
@@ -37,70 +39,55 @@ const mouse = {
     y: undefined
 }
 const canvasOffsetY = 100;
-canvas.addEventListener('mousemove', function (event) {
-    mouse.x = event.pageX;
-    mouse.y = event.pageY - canvasOffsetY;
-    for (let i = 0; i < 3; i++) {
-        spots.push(new Particle());
-    }
+canvas.addEventListener('mousemove', function(event) {
+    const x = event.pageX;
+    const y = event.pageY - canvasOffsetY;
+
+    mouse.x = x;
+    mouse.y = y;
+
+    trail.push({ x, y, alpha: 1 }); // alpha = full opacity
+    if (trail.length > maxTrailLength) trail.shift();
 });
 canvas.addEventListener('mouseout', function () {
+    trail = []; // Clear trail when mouse leaves canvas
     mouse.x = undefined;
     mouse.y = undefined;
 })
 
-class Particle {
-    constructor() {
-        this.x = mouse.x;
-        this.y = mouse.y;
-        this.size = Math.random() * 2 + 0.1;
-        this.speedX = Math.random() * 2 - 1;
-        this.speedY = Math.random() * 2 - 1;
-        this.color = "#e6f1ff";
-    }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.1) this.size -= 0.03;
-    }
-    draw() {
-        c.fillStyle = this.color;
-        c.beginPath();
-        c.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        c.fill();
-    }
-}
+function drawMouseTrail() {
+    c.save(); // ← save current drawing state
+    for (let i = 0; i < trail.length - 1; i++) {
+        const p1 = trail[i];
+        const p2 = trail[i + 1];
 
-function handleParticle() {
-    for (let i = 0; i < spots.length; i++) {
-        spots[i].update();
-        spots[i].draw();
-        for (let j = i; j < spots.length; j++) {
-            const dx = spots[i].x - spots[j].x;
-            const dy = spots[i].y - spots[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 90) {
-                c.beginPath();
-                c.strokeStyle = spots[i].color;
-                c.lineWidth = spots[i].size / 10;
-                c.moveTo(spots[i].x, spots[i].y);
-                c.lineTo(spots[j].x, spots[j].y);
-                c.stroke();
-            }
-        }
-        if (spots[i].size <= 0.3) {
-            spots.splice(i, 1); i--;
-        }
+        c.strokeStyle = `rgba(230, 241, 255, ${p1.alpha})`;
+        c.lineWidth = 4;
+        c.shadowBlur = 20;
+        c.shadowColor = '#e6f1ff';
+        c.beginPath();
+        c.moveTo(p1.x, p1.y);
+        c.lineTo(p2.x, p2.y);
+        c.stroke();
+
+        p1.alpha -= trailFade;
+        if (p1.alpha < 0) p1.alpha = 0;
     }
+    c.restore(); // ← restore to previous state (no glow, no shadow)
 }
 
 function welcomeText(x, y, size) {
     this.x = x;
-    this.y = y;
+    this.y = 350; // start above the canvas
+    this.targetY = y; // final resting position (center)
     this.size = size;
-    this.maxSize = canvas.width * 0.06;  // 7% of canvas width
-    this.minSize = canvas.width * 0.05;  // 5% of canvas width
-    this.scaleIncrement = canvas.width * 0.0003; // Increment based on canvas width
+    this.maxSize = canvas.width * 0.06;  
+    this.minSize = canvas.width * 0.05;  
+
+    this.targetSize = this.size;
+    this.scaleSpeed = 0.04;
+
+    this.dropSpeed = 0.03; // easing for drop-down effect
 
     this.draw = function () {
         c.fillStyle = '#e6f1ff';
@@ -111,32 +98,38 @@ function welcomeText(x, y, size) {
     }
 
     this.update = function () {
-        // Ensure that text is recentered when resized
+        // Smooth drop-down animation
+        this.y += (this.targetY - this.y) * this.dropSpeed;
+
         this.x = canvas.width / 2;
-        this.y = canvas.height / 2;
 
-        const hoverWidth = this.size * 5;
-        const hoverHeight = this.size * 0.5;
+        // Measure actual text width for hover
+        c.font = 'bold ' + this.size + 'px Poppins';
+        const textMetrics = c.measureText('Welcome to my website!');
+        const textWidth = textMetrics.width;
+        const textHeight = this.size; 
 
-        // Adjust size on mouse hover
-        if (mouse.x - this.x < hoverWidth && mouse.x - this.x > -hoverWidth &&
-            mouse.y - this.y < hoverHeight && mouse.y - this.y > -hoverHeight) {
-            if (this.size < this.maxSize) {
-                this.size += this.scaleIncrement; // Scale up incrementally
-            }
-        } else if (this.size > this.minSize) {
-            this.size -= this.scaleIncrement; // Scale down incrementally
+        // Hover detection
+        if (mouse.x >= this.x - textWidth/2 && mouse.x <= this.x + textWidth/2 &&
+            mouse.y >= this.y - textHeight/2 && mouse.y <= this.y + textHeight/2) {
+            this.targetSize = this.maxSize;
+        } else {
+            this.targetSize = this.minSize;
         }
+
+        // Smoothly adjust size
+        this.size += (this.targetSize - this.size) * this.scaleSpeed;
 
         this.draw();
     }
 
     this.adjustSize = function () {
-        this.maxSize = canvas.width * 0.06;  // 7% of canvas width
-        this.minSize = canvas.width * 0.05;  // 5% of canvas width
-        this.scaleIncrement = canvas.width * 0.0003; // Recalculate increment on resize
-        this.size = this.minSize; // Reset to minSize on resize
-        this.update();  // Ensure text is redrawn with the new size
+        this.maxSize = canvas.width * 0.06;
+        this.minSize = canvas.width * 0.05;
+        this.size = this.minSize;
+        this.targetSize = this.size;
+        this.targetY = canvas.height / 2;
+        this.update();
     }
 }
 
@@ -178,7 +171,10 @@ var bubbleArray = [];
 function init() {
     bubbleArray = [];
     for (var i = 0; i < numberOfBubbles; i++) {
-        var radius = (Math.random() * bubbleSize);
+
+        var minSize = bubbleSize * 0.5; // adjust 0.5 → 0.7 for even larger bubbles
+        var radius = Math.random() * (bubbleSize - minSize) + minSize;
+
         var x = Math.random() * (innerWidth - radius * 2) + radius;
         var y = Math.random() * (innerHeight - radius * 2) + radius;
         var dx = (Math.random() - 0.5);
@@ -191,11 +187,15 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0, 0, canvas.width, canvas.height);
+
     for (var i = 0; i < bubbleArray.length; i++) {
         bubbleArray[i].update();
     }
-    text.update();
-    handleParticle();
+
+    drawMouseTrail(); // safely wrapped in c.save()/c.restore()
+
+    text.update(); // always drawn on top, crisp and glow-free
+
     hue++;
 }
 animate();
