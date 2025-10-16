@@ -78,7 +78,7 @@ function drawMouseTrail() {
 
 function welcomeText(x, y, size) {
     this.x = x;
-    this.y = 350; // start above the canvas
+    this.y = 351; // start above the canvas
     this.targetY = y; // final resting position (center)
     this.size = size;
     this.maxSize = canvas.width * 0.06;  
