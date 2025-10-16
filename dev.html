@@ -25,8 +25,8 @@
             padding-top: 40px;
             color: #e6f1ff;
             letter-spacing: 2px;
-            font-weight:500;
-            font-size: 25px;
+            font-weight:600;
+            font-size: 30px;
         }
         .titleDivider {
             height: 40px;
@@ -50,11 +50,13 @@
             justify-content:center;
             align-items: center;
             border: 3px solid #4b6599;
-            border-radius: 5px;
+            border-radius: 15px;
             text-align: center;
             transition: all 0.2s ease-out;
             padding: 0;
             opacity: .8;
+
+            overflow: hidden;
         }
         .content .moduleContainer .projectModule .projectPreview img{
             width: 100%;
@@ -70,6 +72,9 @@
             color: #e6f1ff;
             font-weight: 300;
             text-decoration: none;
+        }
+        .content .moduleContainer .projectModule .projectPreview h2{
+            margin-top: 15px;
         }
         .content .moduleContainer .projectModule .projectPreview a:hover{
             color: #64ffda;
@@ -89,31 +94,38 @@
         }
         /* Project description styles */
         .projectDescription {
-            transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            margin: 10px; /* Adjust as needed */
+            padding: 0 30px; /* horizontal padding stays constant */
+            transition: max-height 0.25s ease-out, opacity 0.25s ease-out, padding 0.25s ease-out;
         }
+
+        /* Expanded state */
         .projectDescription.expanded {
-            max-height: 500px;
+            max-height: 500px;      /* adjust as needed */
             opacity: 1;
-            transition: max-height 0.25s ease-in, opacity 0.25s ease-in;
+            padding: 30px;           /* adds top/bottom spacing smoothly */
         }
         /* Toggle button styles */
         .toggle-description {
             display: inline-block;
             cursor: pointer;
             color: #e6f1ff;
-            border: 1px solid #e6f1ff;
-            padding: 3px 10px;
-            border-radius: 3px;
+            border: 2px solid #4b6599;
+            padding: 5px 20px;
+            border-radius: 30px;
             margin-top: 12px;
-            transition: opacity 0.25s ease-in-out;
+            transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease; /* smooth hover */
         }
         .toggle-description:hover{
             color: #64ffda;;
-            border: 1px solid #64ffda;
+            border: 2px solid #64ffda;
+            background: rgba(100, 255, 218, 0.1); /* optional subtle hover background */
+        }
+
+        .projectPreview {
+            margin-bottom: 20px;
         }
         @media screen and (max-width: 768px) {
             .content{
@@ -173,7 +185,7 @@
             <div class="projectModule">
                 <div class="projectPreview">
                     <a href="https://www.bentonksactor.com/"><video muted loop playsinline autoplay src="/images/ben-tonks-preview.mp4" class="vid" type="video/mp4"></a>
-                    <h2 id="projectText2"><a href="https://www.bentonksactor.com/">Commission Site</a></h2>
+                    <h2 id="projectText2" class="projectTitle"><a href="https://www.bentonksactor.com/">Commission Site</a></h2>
                     <span class="toggle-description" data-toggle="description" data-id="2">More Info</span>
                     <div id="projectDescription2" class="projectDescription">
                         <p>An actor portfolio site made using webflow. This project gave me some real experience with a client to create a personalized commission site using a content management system.</p>
