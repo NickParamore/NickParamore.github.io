@@ -29,8 +29,24 @@ scaleBubbles();
 window.addEventListener('resize', function () {
     scaleBubbles();
     resizeCanvas();
-    text.adjustSize();  // Adjust text size on window resize
-    init();
+    text.adjustSize(); // Adjust text size on window resize
+
+    // Reinitialize bubbles but with zero opacity
+    bubbleArray = [];
+    for (var i = 0; i < numberOfBubbles; i++) {
+        var minSize = bubbleSize * 0.5;
+        var radius = Math.random() * (bubbleSize - minSize) + minSize;
+        var x = Math.random() * (innerWidth - radius * 2) + radius;
+        var y = Math.random() * (innerHeight - radius * 2) + radius;
+        var dx = (Math.random() - 0.5);
+        var dy = (Math.random() - 0.5);
+        var bubbleStoke = Math.random() * 1;
+
+        // Add a fade-in property
+        var bubble = new Bubbles(x, y, dx, dy, radius, bubbleStoke);
+        bubble.opacity = 0; // start invisible
+        bubbleArray.push(bubble);
+    }
 });
 
 // Initialize mouse x and y variables
@@ -174,14 +190,18 @@ function Bubbles(x, y, dx, dy, radius, bubbleStoke) {
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         c.lineWidth = this.bubbleStoke;
 
-        // Use the global hue variable for a unified color flow
         const bubbleColor = `hsl(${(hue + this.x) % 360}, 100%, 75%)`;
         c.strokeStyle = bubbleColor;
-
         c.shadowBlur = 8;
         c.shadowColor = bubbleColor;
+
+        // apply fade-in
+        if (this.opacity < 1) this.opacity += 0.02; // adjust speed
+        c.globalAlpha = this.opacity;
+
         c.stroke();
-        c.shadowBlur = 0; // reset after drawing
+        c.shadowBlur = 0;
+        c.globalAlpha = 1; // reset
     };
     this.update = function () {
         this.draw();
