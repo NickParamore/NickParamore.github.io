@@ -56,25 +56,51 @@ canvas.addEventListener('mouseout', function () {
 })
 
 function drawMouseTrail() {
-    c.save(); // ← save current drawing state
-    for (let i = 0; i < trail.length - 1; i++) {
-        const p1 = trail[i];
-        const p2 = trail[i + 1];
+    if (trail.length < 2) return;
 
-        c.strokeStyle = `rgba(230, 241, 255, ${p1.alpha})`;
-        c.lineWidth = 4;
-        c.shadowBlur = 20;
-        c.shadowColor = '#e6f1ff';
-        c.beginPath();
-        c.moveTo(p1.x, p1.y);
-        c.lineTo(p2.x, p2.y);
-        c.stroke();
+    c.save();
+    c.lineWidth = 3;
+    c.shadowBlur = 10;
+    c.shadowColor = '#e6f1ff';
+    c.lineJoin = 'round';
+    c.lineCap = 'round';
 
-        p1.alpha -= trailFade;
-        if (p1.alpha < 0) p1.alpha = 0;
+    // Start the gradient-like fading path
+    c.beginPath();
+    c.moveTo(trail[0].x, trail[0].y);
+
+    for (let i = 0; i < trail.length - 2; i++) {
+        const p0 = trail[i];
+        const p1 = trail[i + 1];
+        const xc = (p0.x + p1.x) / 2;
+        const yc = (p0.y + p1.y) / 2;
+        c.quadraticCurveTo(p0.x, p0.y, xc, yc);
     }
-    c.restore(); // ← restore to previous state (no glow, no shadow)
+
+    // Last segment
+    const last = trail[trail.length - 1];
+    c.lineTo(last.x, last.y);
+
+    // Use the alpha of the first (oldest) point for overall opacity
+    const avgAlpha = trail.reduce((sum, p) => sum + p.alpha, 0) / trail.length;
+    c.strokeStyle = `rgba(230, 241, 255, ${avgAlpha})`;
+    hue += 1; // slow color rotation
+    const color = `hsl(${hue % 360}, 100%, 85%)`;
+    c.strokeStyle = color;
+    c.stroke();
+    c.closePath();
+
+    // Fade points gradually
+    for (let i = 0; i < trail.length; i++) {
+        trail[i].alpha -= trailFade;
+        if (trail[i].alpha < 0) trail[i].alpha = 0;
+    }
+
+    // Remove fully invisible points
+    trail = trail.filter(p => p.alpha > 0);
+    c.restore();
 }
+
 
 function welcomeText(x, y, size) {
     this.x = x;
@@ -147,9 +173,16 @@ function Bubbles(x, y, dx, dy, radius, bubbleStoke) {
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         c.lineWidth = this.bubbleStoke;
-        c.strokeStyle = '#64ffda';
+
+        // Use the global hue variable for a unified color flow
+        const bubbleColor = `hsl(${(hue + this.x) % 360}, 100%, 75%)`;
+        c.strokeStyle = bubbleColor;
+
+        c.shadowBlur = 8;
+        c.shadowColor = bubbleColor;
         c.stroke();
-    }
+        c.shadowBlur = 0; // reset after drawing
+    };
     this.update = function () {
         this.draw();
 
